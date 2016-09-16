@@ -1,0 +1,1 @@
+# goo.gl abuse script
