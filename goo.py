@@ -1,16 +1,17 @@
 #!/usr/bin/python
 import urllib2
+import string
 from time import sleep
 
-lists = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+lists = list(string.digits + string.ascii_upercase + string.ascii_lowercase)
 po1 = po2 = po3 = po4 = po5 = po6 =0
 uri_end=''
 for i in xrange (56800235584):
     if po6 and po5 and po4 and po3 and po2 == 61 and po1 == 62:
-        print 'done'
+        print('done')
         exit();
-    uri_end = str(lists[po6]+lists[po5]+lists[po4]+lists[po3]+lists[po2]+lists[po1])
-    full_url = "http://goo.gl/"+uri_end
+    uri_end = '%s%s%s%s%s%s' % (lists[po6], lists[po5], lists[po4], lists[po3], lists[po2], lists[po1])
+    full_url = "http://goo.gl/%s" % uri_end
     try:
         request_url = urllib2.urlopen(full_url).geturl()
         with open('urls.txt', 'a') as f:
